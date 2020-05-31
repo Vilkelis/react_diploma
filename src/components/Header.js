@@ -1,7 +1,8 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
-import HeaderLogo from './HeaderLogo'
-import HeaderMenu from './HeaderMenu'
+import {Link} from 'react-router-dom';
+import HeaderLogo from './HeaderLogo';
+import HeaderMenu from './HeaderMenu';
+
  
 function Header(props) {
   return (     
@@ -15,10 +16,10 @@ function Header(props) {
               <div>
                 <div className="header-controls-pics">
                     <div data-id="search-expander" className="header-controls-pic header-controls-search"></div>                           
-                    <div className="header-controls-pic header-controls-cart">
+                    <Link to={"/basket"} className="header-controls-pic header-controls-cart">
                         <div className="header-controls-cart-full">1</div>
                         <div className="header-controls-cart-menu"></div>
-                    </div>
+                    </Link>
                 </div>
                 <form data-id="search-form" className="header-controls-search-form form-inline invisible">
                     <input className="form-control" placeholder="Поиск"/>

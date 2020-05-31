@@ -11,8 +11,6 @@ import ContactsPage from './components/ContactsPage';
 import GoodPage from './components/GoodPage';
 import BasketPage from './components/BasketPage';
 import NoPage from './components/NoPage';
-import Footer from './components/Footer';
-
 
 function App() {
   return (
