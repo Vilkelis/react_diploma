@@ -1,11 +1,16 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import Banner from './Banner';
  
 function NoPage(props) {
   return (
-    <div>  
-      NoPage
-    </div>
+    <React.Fragment>       
+      <section class="top-sales">
+          <h2 class="text-center">Страница не найдена</h2>
+          <p>
+              Извините, такая страница не найдена!
+          </p>
+      </section>
+    </React.Fragment>
   );
 }
 

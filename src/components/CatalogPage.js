@@ -1,11 +1,12 @@
-import React from 'react';
-//import PropTypes from 'prop-types';
+import React from 'react'; 
+import Banner from './Banner';
+import Catalog from './Catalog';
  
 function CatalogPage(props) {
   return (
-    <div>  
-      CatalogPage
-    </div>
+    <React.Fragment>          
+      <Catalog/>      
+    </React.Fragment>  
   );
 }
 

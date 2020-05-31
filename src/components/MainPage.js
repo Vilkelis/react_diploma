@@ -1,11 +1,15 @@
 import React from 'react';
-//import PropTypes from 'prop-types';
+import Banner from './Banner';
+import TopSales from './TopSales';
+import Catalog from './Catalog';
+ 
  
 function MainPage(props) {
   return (
-    <div>  
-      MainPage
-    </div>
+    <React.Fragment>           
+        <TopSales/>
+        <Catalog/>
+    </React.Fragment>
   );
 }
 
