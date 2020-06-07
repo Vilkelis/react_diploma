@@ -443,6 +443,7 @@ section {
 .catalog-item-size {
   display: inline-block;
   padding: 0 10px;
+  cursor: pointer;
 }
 
 .catalog-item-size.selected {
@@ -568,4 +569,17 @@ h2, .h2 {
 .card-styled {
   max-width: 30rem;
   margin: 0 auto;
+}
+
+.error {
+  display: flex;
+  justify-content: center;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.ml-10 {
+  margin-left: 10px;
 }

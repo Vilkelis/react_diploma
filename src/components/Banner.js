@@ -1,6 +1,7 @@
 import React from 'react';
  
 function Banner(props) {
+
   return (
     <div className="banner">
       <img src="/img/banner.jpg" className="img-fluid" alt="К весне готовы!"/>

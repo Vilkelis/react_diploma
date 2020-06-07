@@ -4,7 +4,7 @@ import Catalog from './Catalog';
 function CatalogPage(props) {
   return (
     <React.Fragment>          
-      <Catalog/>      
+      <Catalog useSearch={true}/>      
     </React.Fragment>  
   );
 }

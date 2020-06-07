@@ -7,7 +7,7 @@ function MainPage(props) {
   return (
     <React.Fragment>           
         <TopSales/>
-        <Catalog/>
+        <Catalog useSearch={false}/>
     </React.Fragment>
   );
 }
