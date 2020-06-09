@@ -1,4 +1,5 @@
 import React from 'react';
+import {onImgError} from '../lib/tools';
 
 function Good(props) {
   const { item, 
@@ -44,7 +45,7 @@ function Good(props) {
       <h2 className="text-center">{item.title}</h2>
       <div className="row">
           <div className="col-5">
-              <img src={item.images[0]}
+              <img src={item.images[0]} onError={onImgError}
                   className="img-fluid" alt={item.title}/>
           </div>
           <div className="col-7">

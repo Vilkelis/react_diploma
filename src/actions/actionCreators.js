@@ -22,6 +22,7 @@ import { FETCH_TOP_SALES_REQUEST,
          ORDER_CART_ITEMS_REQUEST,
          ORDER_CART_ITEMS_SUCCESS,
          ORDER_CART_ITEMS_FAILURE,
+         CLEAR_ORDER_SUCCESS_MESSAGE,
          CHANGE_BUYER_ADDRESS,
          CHANGE_BUYER_PHONE,
          CHANGE_BUYER_AGREE         
@@ -123,6 +124,10 @@ export function orderCartItemsRequest(buyer, items) {
 
 export function orderCartItemsSuccess(answer) {   
   return {type: ORDER_CART_ITEMS_SUCCESS, payload: answer}
+}
+
+export function clearOrderSuccessMessage() {
+  return {type: CLEAR_ORDER_SUCCESS_MESSAGE, payload: null}
 }
 
 export function orderCartItemsFailure(error) {   

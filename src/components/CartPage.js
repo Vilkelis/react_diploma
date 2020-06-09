@@ -1,10 +1,12 @@
 import React from 'react'; 
+import {Link} from 'react-router-dom';
 import {useSelector, useDispatch} from 'react-redux'; 
 import { deleteItemFromCart,
          changeBuyerPhone,
          changeBuyerAddress,
          changeBuyerAgree, 
-         orderCartItemsRequest } from '../actions/actionCreators';
+         orderCartItemsRequest,
+         clearOrderSuccessMessage } from '../actions/actionCreators';
 import Error from './Error';
 import Preloader from './Preloader';         
 import CartItems from './CartItems';
@@ -16,9 +18,14 @@ function CartPage(props) {
       totalSum,
       buyer,
       loading,
-      error
+      error,
+      orderSuccess
     } = useSelector(state => state.cart);
   const dispatch = useDispatch();    
+
+  React.useEffect( () => {               
+    dispatch(clearOrderSuccessMessage());
+  }, [dispatch])
 
   const handleItemDelete = (item) => {     
     dispatch(deleteItemFromCart(item));
@@ -38,6 +45,18 @@ function CartPage(props) {
 
   const handleSendCart = () => {
     dispatch(orderCartItemsRequest(buyer, items));
+  }
+
+
+  if ( orderSuccess ) {
+   return (
+    <div className="jumbotron mt-15">
+      <h1 className="display-4">Заказ оформлен успешно. Спасибо!</h1>
+      <p className="lead">Ваш заказ отправлен оператору нашего магазина. Вы получите СМС с информацией о готовности заказа в ближайшее время.</p>
+      <hr className="my-4" />       
+      <Link to={'/catalog'} className="btn btn-primary btn-lg" role="button">Продолжить покупки</Link>
+    </div>     
+   );
   }
   
   return (

@@ -5,6 +5,7 @@ import {
   ORDER_CART_ITEMS_REQUEST,
   ORDER_CART_ITEMS_SUCCESS,
   ORDER_CART_ITEMS_FAILURE,
+  CLEAR_ORDER_SUCCESS_MESSAGE,
   CHANGE_BUYER_ADDRESS,
   CHANGE_BUYER_PHONE,
   CHANGE_BUYER_AGREE     
@@ -15,7 +16,8 @@ const initialState = {
   totalSum: 0,
   buyer: { phone: '', address: '', agreeWithRooles: false},
   loading: false,
-  error: null
+  error: null,
+  orderSuccess: false
 };
 
 const totalSumCalc = ( cartItems ) => {
@@ -56,18 +58,20 @@ export default function cartReducer(state = initialState, action) {
       items.push(cartItem);
     }          
     putCartItemsToStorage(items);
-    return {...state, items: items, totalSum: totalSumCalc(items) };
+    return {...state, items: items, totalSum: totalSumCalc(items), orderSuccess: false};
   case DELETE_ITEM_FROM_CART:     
     const newItems = getCartItemsFromStorage(state.items).filter( o => o.item.id !== action.payload.item.id && o.size !== action.payload.size);
     putCartItemsToStorage(newItems);
     return {...state, items: newItems, totalSum: totalSumCalc(newItems)};
   case ORDER_CART_ITEMS_REQUEST:
-    return {...state, loading: true, error: null}
+    return {...state, loading: true, error: null, orderSuccess: false}
   case ORDER_CART_ITEMS_FAILURE:        
     return {...state, loading: false, error: action.payload.error}   
   case ORDER_CART_ITEMS_SUCCESS:     
     putCartItemsToStorage([]);
-    return {...state, loading: false, error: null, items: [], totalSum: 0}
+    return {...state, loading: false, error: null, items: [], totalSum: 0, orderSuccess: true}
+  case CLEAR_ORDER_SUCCESS_MESSAGE:
+    return {...state, orderSuccess: false}
   case CHANGE_BUYER_ADDRESS:
     return {...state, buyer: {...state.buyer, address: action.payload}}
   case CHANGE_BUYER_PHONE:
